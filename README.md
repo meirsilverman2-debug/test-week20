@@ -37,7 +37,48 @@ test-week20
     └───service
 ```
  ---
+* ## How to run the server:
+---
+```
+npm start (it will be with --watch)
+```
+---
+* ## list of endpoints in the game:
+---
+```
+router.post("/games", (req, res) => {
+    res.json({});
+});
+
+
+router.get("/games/:id", (req, res) => {
+    res.json({});
+});
+
+
+router.post("/games/:id/reinforce", (req, res) => {  
+    res.json({});
+});
+
+
+router.post("/games/:id/attack", (req, res) => {
+    res.json({});
+});
+
+
+router.post("/games/:id/move", (req, res) => {
+    res.json({});
+});
+
+
+router.post("/games/:id/end-turn", (req, res) => {
+    res.json({});
+});
+```
+SIX in total four post and one get because you need to give more than get from others this such a good lesson.
+---
 * ##
+
 
 
 
