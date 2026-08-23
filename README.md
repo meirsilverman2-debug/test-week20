@@ -77,7 +77,10 @@ router.post("/games/:id/end-turn", (req, res) => {
 ```
 SIX in total four post and one get because you need to give more than get from others this such a good lesson.
 ---
-* ##
+* ## installsion that I install into my system:
+```
+npm i express mongodb @supabase/supabase-js dotenv cors 
+```
 
 
 
