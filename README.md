@@ -77,10 +77,17 @@ router.post("/games/:id/end-turn", (req, res) => {
 ```
 SIX in total four post and one get because you need to give more than get from others this such a good lesson.
 ---
-* ## installsion that I install into my system:
+* ## Installsion that I install into my system:
 ```
 npm i express mongodb @supabase/supabase-js dotenv cors 
 ```
+---
+* ## The first endpoint POST /games:
+---
+is our first endpoint which gets the player name and than creates the first round of the game which contains the player name the number of the round which is in the bgining  round 1 it also contans the first phase out of four of the player turn which is reinforce the status of the game is of course playing intil the game is finished because the player or the computer won in the game the winner is also null because of the same reason that no has won yet so for now it is null and the territories is a list/array which holds a copy of the map and addition of amount of soldiers for each trritory 8 soldiers for the two HQ in the game for each side the player side and the computer side
+and 4 soldiers for any other trritories in the game's map aslo for each side
+and if the name is in the right way meaning it is not an ampty one we will receive status code of 201 (it has been created wow!!!) and the object that has benn created plus the new id creted for this game and even if the name came in the requested body with whitespaces we trim it down with the trim string method so it will come out nicely without them ok but if the server receivce a bad body request meaning a an ampty playerName HO NO!!!! this is a big no no and the client will receive back status code 400
+with the message "bad reqest" amigo so next play the game but not with the system.
 
 
 
