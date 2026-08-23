@@ -8,6 +8,8 @@ docker build -t <name of the tag (whatever you choose)> . (do not forget the dot
 * ## map.json:
 ---
 because this is already a given data form that I need to choose a kind of database to contain it in I chose supabase because the map on iteself will not change in the game only the control over parts of the map will.
+in the end I used mongodb data base for this too becaus I have a problem in my supabase connection even if it is not the optimal thing for it but 
+a programer got to do what a programer got to do and I stand bhind my chice.
 ---
 * ## game status:
 ---
