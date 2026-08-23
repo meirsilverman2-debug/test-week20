@@ -1,4 +1,4 @@
-* # test-week20:
+* # test-week20 🤖:
 ---
 * ## How to run the docker file:
 ```
@@ -90,6 +90,7 @@ is our first endpoint which gets the player name and than creates the first roun
 and 4 soldiers for any other trritories in the game's map aslo for each side
 and if the name is in the right way meaning it is not an ampty one we will receive status code of 201 (it has been created wow!!!) and the object that has benn created plus the new id creted for this game and even if the name came in the requested body with whitespaces we trim it down with the trim string method so it will come out nicely without them ok but if the server receivce a bad body request meaning a an ampty playerName HO NO!!!! this is a big no no and the client will receive back status code 400
 with the message "bad reqest" amigo so next play the game but not with the system.
+BTW I finished the first end point how anazing is theis ah!!!
 
 
 
