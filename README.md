@@ -48,7 +48,7 @@ test-week20
 npm start (it will be with --watch)
 ```
 ---
-* ## list of endpoints in the game:
+* ## list of endpoints in the game 📜:
 ---
 ```
 router.post("/games", (req, res) => {
