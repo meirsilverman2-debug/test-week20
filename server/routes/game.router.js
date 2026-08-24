@@ -1,11 +1,12 @@
 import express from "express";
-import {createGameCtrl, getGameByCtrl} from "../controlers/game.controler.js";
+import { createGameCtrl, getGameByCtrl } from "../controlers/game.controler.js";
 
 const router = express.Router();
 
 
 // The first router for creating a the first round of the game:
-router.post("/games",createGameCtrl);
+router.post("/games", createGameCtrl);
+
 
 // The second router for loading a game by ID:
 router.get("/games/:id", getGameByCtrl);
@@ -13,28 +14,28 @@ router.get("/games/:id", getGameByCtrl);
 
 router.post("/games/:id/reinforce", (req, res) => {
     console.log("/games/:id/reinforce");
-    
+
     res.json({});
 });
 
 
 router.post("/games/:id/attack", (req, res) => {
     console.log("/games/:id/attack");
-    
+
     res.json({});
 });
 
 
 router.post("/games/:id/move", (req, res) => {
     console.log("/games/:id/move");
-    
+
     res.json({});
 });
 
 
 router.post("/games/:id/end-turn", (req, res) => {
     console.log("/games/:id/end-turn");
-    
+
     res.json({});
 });
 

@@ -1,13 +1,14 @@
 import { createGameService, getGameByService } from "../service/game.service.js";
 
+
 // the first controler that creates the first round of the game:
-export async function createGameCtrl(req, res, next){
+export async function createGameCtrl(req, res, next) {
     try {
-        let {playerName} = req.body;
+        let { playerName } = req.body;
         playerName = playerName.trim();
 
         // The basic logic in playerName that we receive in the requested body:
-        if (!playerName){
+        if (!playerName) {
             const error = new Error("bad request");
             error.status = 400;
             throw error;
@@ -27,16 +28,20 @@ export async function createGameCtrl(req, res, next){
 
     } catch (error) {
         console.log(error);
-        next(error);    
-    };   
+        next(error);
+    };
 };
 
+
 // To load a specific game by a game ID:
-export async function getGameByCtrl(req, res, next){
+export async function getGameByCtrl(req, res, next) {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const game = await getGameByService(id);
-        
+        if (!game || game.length === 0) {
+            res.status(404).json({ "error": "המשחק לא נמצא" });
+        };
+
         res.status(200).json(game);
     } catch (error) {
         console.log(error);
