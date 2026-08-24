@@ -70,8 +70,14 @@ export async function reinforceSrvice(gameId, gameData){
         const game = await getGameBy(gameId);
 
         
-        if (!game || game.length === 0) {
+        if (!game || game.length === 0 ) {
             res.status(404).json({ "error": "המשחק לא נמצא" });
+        };
+
+        if (game[0].status === "finishing" || game[0].phase !== "reinforce"){
+            const error = new Error("You are not allow to reinforce in this stage");
+            error.status = 409;
+            throw error;
         };
 
         console.log(game);
@@ -80,10 +86,13 @@ export async function reinforceSrvice(gameId, gameData){
         console.log(typeof(game[0]["territories"]));
         
         game[0].territories.forEach((e) => {
-            if (e.id === gameData){
+            if (e.id === gameData && e.owner === "player"){
                 e.soldiers += 3;
             }
         });
+
+        game[0].playerEvent = null;
+        game[0].computerEvents = []
         game[0].phase = "attack";
         console.log(game);
 
