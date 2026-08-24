@@ -59,33 +59,11 @@ export async function getTheEntierMap() {
 // ]
 // )
 
+
+// A function that creates a game and than returns it with the given new ObejectId which the data base gives it:
 export async function createGame(gameData) {
     try {
         console.log("creatGame");
-
-        // Getting a copy of the map from the database into are creation of the game:
-        const map = await getTheEntierMap();
-
-        // Logs for checking:
-        // console.log(map);
-        // console.log(typeof map);
-
-        // To add the amount of soldiers for each city and the current owner of that city,
-        // and also adding each element of the map into the key in the object of the game which is the territories key:
-        map.forEach((e) => {
-            if (e.name === "ירושלים" || e.name === "ביירות") {
-                e["soldiers"] = 8;
-            }
-            else { e["soldiers"] = 4 };
-
-            e["owner"] = e.startOwner;
-            gameData["territories"] += e;
-        });
-
-        // Logs for checking:
-        // console.log(map);
-        // console.log(gameData);
-
         const result = await collection.insertOne(gameData);
         return {
             ...gameData,
@@ -109,6 +87,7 @@ export async function getGameBy(gameId) {
 };
 
 
+// For adding many elements into the database:
 export async function addMany(data) {
     try {
         const result = await collection.insertMany(date);
@@ -119,6 +98,7 @@ export async function addMany(data) {
 };
 
 
+// Getting all of the games that have been created at this point in time and place:
 export async function getALL() {
     try {
         const result = await collection.find("*").toArray();
@@ -129,9 +109,23 @@ export async function getALL() {
 };
 
 
+// A functoin that find a specific game by its ID and than update it and also returns the updated virsion:
 export async function updateGame(gameId, newData) {
+    console.log("updateGame");
     const result = await collection.findOneAndUpdate(
-        { id: new ObjectId(gameId) },
+        { _id: new ObjectId(gameId) },
         { $set: newData },
         { returnDocument: "after" });
+        console.log(result);
+        
+    return result;
+};
+
+
+// A function that delete one game by a game ID and than returns the deleted game:
+export async function deleteGame(gameId) {
+    const result = await collection.findOneAndDelete(
+        { _id: new ObjectId(gameId) }
+    );
+    return result;
 };

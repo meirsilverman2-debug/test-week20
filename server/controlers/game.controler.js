@@ -1,4 +1,4 @@
-import { createGameService, getGameByService } from "../service/game.service.js";
+import { createGameService, getGameByService, reinforceSrvice } from "../service/game.service.js";
 
 
 // the first controler that creates the first round of the game:
@@ -43,6 +43,28 @@ export async function getGameByCtrl(req, res, next) {
         };
 
         res.status(200).json(game);
+    } catch (error) {
+        console.log(error);
+        next(error);
+    };
+};
+
+
+export async function reinforceCtrl(req, res, next) {
+    try {
+        console.log("reinforceCtrl");
+        const { territoryId } = req.body;
+        const { id } = req.params;
+
+        console.log(id);
+        console.log(typeof id);
+        
+        console.log(territoryId);
+        console.log(typeof territoryId);
+
+        const game = await reinforceSrvice(id, territoryId);
+        res.status(200).json(game);
+
     } catch (error) {
         console.log(error);
         next(error);
