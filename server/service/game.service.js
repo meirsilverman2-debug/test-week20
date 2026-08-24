@@ -113,8 +113,24 @@ export async function reinforceSrvice(gameId, gameData){
 };
 
 
-export async function attackService(formID, toId, soldiers, skip){
+export async function attackService(id, formID, toId, soldiers, skip){
     try {
+        console.log("attackService");
+        if (skip) {
+            console.log("The player want to skip this phase");
+            const game = await getGameBy(id);
+            console.log(game);
+            
+            game[0].playerEvent = null;
+            game[0].phase = "move";
+            console.log(game);
+            const result = await updateGame(id, game[0]);
+
+            console.log(result);
+
+            return result;
+        };
+
         const game = await getGameBy(id);
         game[0].territories.forEach((t) => {
             if (t.id !== formID || t.id !== toId || t.owner !== "player" || t.soldiers <= soldiers){
@@ -123,6 +139,7 @@ export async function attackService(formID, toId, soldiers, skip){
                 throw error;
             };
         });
+        return game
         
     } catch (error) {
         console.log(error);

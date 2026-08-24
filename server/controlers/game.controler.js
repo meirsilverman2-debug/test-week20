@@ -1,4 +1,4 @@
-import { createGameService, getGameByService, reinforceSrvice } from "../service/game.service.js";
+import { createGameService, getGameByService, reinforceSrvice,  attackService } from "../service/game.service.js";
 
 
 // the first controler that creates the first round of the game:
@@ -41,7 +41,10 @@ export async function getGameByCtrl(req, res, next) {
         if (!game || game.length === 0) {
             res.status(404).json({ "error": "המשחק לא נמצא" });
         };
-
+         console.log(game);
+        game[0]["id"] = game[0]._id
+       
+        
         res.status(200).json(game);
     } catch (error) {
         console.log(error);
@@ -82,12 +85,16 @@ export async function attackCtrl(req, res, next) {
 
         const { id } = req.params;
 
+        console.log(typeof id);
+        console.log(id);
+        
+
         if ((!formID || !toId || !soldiers) && (!skip) && (!id)) {
             res.status(400).json({ error: "bad request" });
         };
 
-        const game = await attackService(id, formID, toId, soldiers, skip);
-
+        const game = await attackService (id, formID, toId, soldiers, skip);
+        return game;
 
     } catch (error) {
         console.log(error);

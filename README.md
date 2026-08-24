@@ -84,7 +84,7 @@ SIX in total four post and one get because you need to give more than get from o
 npm i express mongodb @supabase/supabase-js dotenv cors 
 ```
 ---
-* ## The first endpoint POST /games:
+* ## The first endpoint POST /games 💾:
 ---
 is our first endpoint which gets the player name and than creates the first round of the game which contains the player name the number of the round which is in the bgining  round 1 it also contans the first phase out of four of the player turn which is reinforce the status of the game is of course playing intil the game is finished because the player or the computer won in the game the winner is also null because of the same reason that no has won yet so for now it is null and the territories is a list/array which holds a copy of the map and addition of amount of soldiers for each trritory 8 soldiers for the two HQ in the game for each side the player side and the computer side
 and 4 soldiers for any other trritories in the game's map aslo for each side
@@ -101,7 +101,15 @@ this is for today I think?🧐.
 ---
 This end point start the first phase of a move which on the turn of the player he chooses a territory to strangth by adding three additinal soldiers to it of course we need to check that the territory is really belongs to the player and that the phase of the game is rienforce if not the player will not be able to make this request the body that is required for this is a territory ID which only the territory that has this specific ID number will be reinforce.
 ---
-* ## The forth endpoint POST /games/:id/attack:
+* ## The forth endpoint POST /games/:id/attack 🛰️:
+---
+OH OHHHO... this endpoint is a tricky one to say the least in this end point the client has two options one is to choose attcking the other side or to skip this Phase 
+by puting in the body request the option skip which if he choose this option the game will be updated to phase 'move' and the playerEvent key of the game will change into 'null' and if the player choose to attack oh than in the requested body not only that he will need to give the location that he wants to attack but also from each territory that he owns will the attack come from 
+and how many soldiers he wants to send on this attack mission quest and this end point hold a lot of 'if' and 
+logic behind it so it is very hard you will not beleieve it.
+---
+* ## The fifth endpoint POST /games/:id/move:
+---
 
 
 
