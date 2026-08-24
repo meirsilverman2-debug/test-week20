@@ -94,8 +94,7 @@ export async function attackCtrl(req, res, next) {
         };
 
         const game = await attackService (id, formID, toId, soldiers, skip);
-        return game;
-
+        res.status(200).json(game);
     } catch (error) {
         console.log(error);
         throw error;

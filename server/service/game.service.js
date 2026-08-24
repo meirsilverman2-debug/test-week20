@@ -128,6 +128,8 @@ export async function attackService(id, formID, toId, soldiers, skip){
 
             console.log(result);
 
+            console.log("work");
+            
             return result;
         };
 
