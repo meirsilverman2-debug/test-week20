@@ -79,6 +79,8 @@ export async function createGame(gameData) {
 export async function getGameBy(gameId) {
     try {
         const result = await collection.find({ _id: new ObjectId(gameId) }).toArray();
+        result[0].id = result[0]._id;
+        console.log(result);
         return result;
     } catch (error) {
         console.log(error);

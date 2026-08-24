@@ -1,5 +1,8 @@
 * # test-week20 🤖:
 ---
+* # My name is a test on itself:
+star (shine) + 925 + 👨‍🦱 will guess the right answer who knows: ??????????????????
+---
 * ## How to run the docker file:
 ```
 docker build -t <name of the tag (whatever you choose)> . (do not forget the dot/point in the command it is very important ok)
@@ -100,6 +103,8 @@ this is for today I think?🧐.
 * ## The rhird endpoint POST /games/:id/reinforce:
 ---
 This end point start the first phase of a move which on the turn of the player he chooses a territory to strangth by adding three additinal soldiers to it of course we need to check that the territory is really belongs to the player and that the phase of the game is rienforce if not the player will not be able to make this request the body that is required for this is a territory ID which only the territory that has this specific ID number will be reinforce.
+
+### Side note: this endpoint work amazingly in the postman but in the game itself because of the way that it takes the game ID that has been given in the req.params it does not work I try to fix it with many different kind of method but without really to fix this problem.
 ---
 * ## The forth endpoint POST /games/:id/attack 🛰️:
 ---
