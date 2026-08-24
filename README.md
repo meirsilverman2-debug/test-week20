@@ -96,6 +96,12 @@ BTW I finished the first end point how anazing is theis ah!!!
 ---
 This second end point loads a specific game by getting a query param in the URL path which than the server is searching in the data base for a the same gameId and if it has been found in the database the client recievce a status code 200 (which this code mean OK/good/alright and so on) but if none of the games in the database are found with the requested id that has been given to us by th client than the client will get a status code 404 meanin the a game with this Id has not been found in the entier system of mongodb and he will receive also this nice and kind message in anther lengauge which is not English { "error": "המשחק לא נמצא" }
 this is for today I think?🧐.
+---
+* ## The rhird endpoint POST /games/:id/reinforce:
+---
+This end point start the first phase of a move which on the turn of the player he chooses a territory to strangth by adding three additinal soldiers to it of course we need to check that the territory is really belongs to the player and that the phase of the game is rienforce if not the player will not be able to make this request the body that is required for this is a territory ID which only the territory that has this specific ID number will be reinforce.
+---
+* ## The forth endpoint POST /games/:id/attack:
 
 
 
