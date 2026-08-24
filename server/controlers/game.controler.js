@@ -49,16 +49,18 @@ export async function getGameByCtrl(req, res, next) {
     };
 };
 
-
+// The reinforce phase controler
 export async function reinforceCtrl(req, res, next) {
     try {
         console.log("reinforceCtrl");
         const { territoryId } = req.body;
         const { id } = req.params;
+        console.log(req.params);
+        
 
         console.log(id);
         console.log(typeof id);
-        
+
         console.log(territoryId);
         console.log(typeof territoryId);
 
@@ -68,5 +70,27 @@ export async function reinforceCtrl(req, res, next) {
     } catch (error) {
         console.log(error);
         next(error);
+    };
+};
+
+export async function attackCtrl(req, res, next) {
+    try {
+        const { formID } = req.body;
+        const { toId } = req.body;
+        const { soldiers } = req.body;
+        const { skip } = req.body;
+
+        const { id } = req.params;
+
+        if ((!formID || !toId || !soldiers) && (!skip) && (!id)) {
+            res.status(400).json({ error: "bad request" });
+        };
+
+        const game = await attackService(id, formID, toId, soldiers, skip);
+
+
+    } catch (error) {
+        console.log(error);
+        throw error;
     };
 };

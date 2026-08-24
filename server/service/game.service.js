@@ -71,7 +71,9 @@ export async function reinforceSrvice(gameId, gameData){
 
         
         if (!game || game.length === 0 ) {
-            res.status(404).json({ "error": "המשחק לא נמצא" });
+            const error = new Error("המשחק לא נמצא");
+            error.status = 404;
+            throw error;
         };
 
         if (game[0].status === "finishing" || game[0].phase !== "reinforce"){
@@ -91,8 +93,8 @@ export async function reinforceSrvice(gameId, gameData){
             }
         });
 
-        game[0].playerEvent = null;
-        game[0].computerEvents = []
+        game[0].playerEvent = `the player has reinforce the location with the ID ${gameData["territoryId"]} with three additional soldiers`;
+        game[0].computerEvents = [];
         game[0].phase = "attack";
         console.log(game);
 
@@ -107,5 +109,23 @@ export async function reinforceSrvice(gameId, gameData){
     } catch (error) {
         console.log(error);
         throw error;  
+    };
+};
+
+
+export async function attackService(formID, toId, soldiers, skip){
+    try {
+        const game = await getGameBy(id);
+        game[0].territories.forEach((t) => {
+            if (t.id !== formID || t.id !== toId || t.owner !== "player" || t.soldiers <= soldiers){
+                const error = new Error("bad reques");
+                error.status = 409;
+                throw error;
+            };
+        });
+        
+    } catch (error) {
+        console.log(error);
+        throw error;
     };
 };

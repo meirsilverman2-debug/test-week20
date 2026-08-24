@@ -1,5 +1,5 @@
 import express from "express";
-import { createGameCtrl, getGameByCtrl, reinforceCtrl } from "../controlers/game.controler.js";
+import { createGameCtrl, getGameByCtrl, reinforceCtrl, attackCtrl } from "../controlers/game.controler.js";
 
 const router = express.Router();
 
@@ -12,6 +12,12 @@ router.post("/games", createGameCtrl);
 router.post("/games/:id/reinforce", reinforceCtrl);
 
 
+
+// The forth endpoint for the optional attack which is the second possible phase:
+router.post("/games/:id/attack", attackCtrl);
+
+
+
 // The second router for loading a game by ID:
 router.get("/games/:id", getGameByCtrl);
 
@@ -19,11 +25,7 @@ router.get("/games/:id", getGameByCtrl);
 
 
 
-router.post("/games/:id/attack", (req, res) => {
-    console.log("/games/:id/attack");
 
-    res.json({});
-});
 
 
 router.post("/games/:id/move", (req, res) => {

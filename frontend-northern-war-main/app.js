@@ -188,7 +188,7 @@ attackButton.addEventListener('click', () => action(game.phase === 'move' ? 'mov
   soldiers: Number(soldiersInput.value),
 }));
 endTurnButton.addEventListener('click', () => {
-  if (game.phase === 'attack') action('skip-attack');
+  if (game.phase === 'attack') action('attack', { skip: true });
   else action('end-turn');
 });
 document.querySelector('#new-game').addEventListener('click', () => {
